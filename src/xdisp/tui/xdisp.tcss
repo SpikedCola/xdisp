@@ -1,0 +1,176 @@
+/* xdisp TUI: cswap's flat, low-chrome layout. Colors come from theme.py. */
+
+Screen {
+    background: $background;
+}
+
+#list-title {
+    height: 1;
+    margin-top: 1;
+    padding: 0 3;
+    color: $secondary;
+}
+
+#empty {
+    height: auto;
+    padding: 0 3;
+    color: $secondary;
+}
+
+#displays {
+    background: $background;
+    padding: 1 2 0 1;
+    scrollbar-size-vertical: 1;
+    height: auto;
+    max-height: 1fr;
+}
+
+#displays:focus {
+    background-tint: $foreground 0%;
+}
+
+#displays ListItem {
+    background: transparent;
+    padding: 0 1;
+    margin-bottom: 1;
+    border-left: thick $background;
+}
+
+#displays ListItem.-highlight,
+#displays:focus ListItem.-highlight {
+    color: $foreground;
+    background: $surface;
+    text-style: none;
+    border-left: thick $primary;
+}
+
+/* -- modals ----------------------------------------------------------------- */
+
+ConfirmModal, NewDisplayModal, OutputModal {
+    align: center middle;
+    background: $background 60%;
+}
+
+.modal-box {
+    width: 72;
+    max-width: 90%;
+    height: auto;
+    max-height: 85%;
+    background: $surface;
+    border: round $panel;
+    padding: 1 2;
+}
+
+.modal-box-wide {
+    width: 110;
+}
+
+.modal-title {
+    text-style: bold;
+    color: $primary;
+    margin-bottom: 1;
+}
+
+.modal-body {
+    color: $foreground;
+    margin-bottom: 1;
+}
+
+.modal-buttons {
+    height: auto;
+    align-horizontal: right;
+    margin-top: 1;
+}
+
+.modal-buttons Button {
+    border: none;
+    height: 1;
+    min-width: 12;
+    padding: 0 2;
+    margin-left: 2;
+    background: $panel;
+    color: $foreground;
+    text-style: none;
+}
+
+.modal-buttons Button:hover {
+    background: $panel-lighten-1;
+}
+
+.modal-buttons Button:focus {
+    background: $primary;
+    color: $background;
+    text-style: bold;
+}
+
+.modal-hint {
+    height: 1;
+    margin-top: 1;
+    color: $secondary;
+}
+
+.modal-output {
+    height: auto;
+    max-height: 30;
+    background: $background;
+    padding: 1;
+}
+
+.form-error {
+    height: auto;
+    color: $error;
+}
+
+NewDisplayModal Input {
+    margin-bottom: 1;
+}
+
+/* Focus shows as the list's accent bar plus a lifted, accented label, so tab
+   is always visible; the box itself shows on/off. */
+NewDisplayModal Checkbox {
+    background: $surface;
+    border: none;
+    border-left: thick $surface;
+    padding-left: 1;
+}
+
+NewDisplayModal Checkbox:focus {
+    background: $panel;
+    border-left: thick $primary;
+}
+
+NewDisplayModal Checkbox > .toggle--label {
+    color: $secondary;
+    background: transparent;
+}
+
+NewDisplayModal Checkbox.-on > .toggle--label {
+    color: $foreground;
+}
+
+NewDisplayModal Checkbox:focus > .toggle--label {
+    color: $primary;
+    background: transparent;
+    text-style: bold;
+}
+
+NewDisplayModal Checkbox > .toggle--button {
+    color: $panel;
+    background: $panel;
+}
+
+NewDisplayModal Checkbox.-on > .toggle--button {
+    color: $background;
+    background: $primary;
+}
+
+/* "all interfaces" is a sub-option of x11vnc: indented, greyed when VNC is off */
+NewDisplayModal #public {
+    margin-left: 3;
+}
+
+NewDisplayModal Checkbox:disabled > .toggle--label,
+NewDisplayModal Checkbox:disabled > .toggle--button {
+    color: $panel-lighten-2;
+    background: $surface;
+}
